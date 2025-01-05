@@ -14,8 +14,6 @@ public class RecursoService {
 
     @Autowired
     private RecursoRepositoy recursoRepositoy;
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
     public List<RecursoDTO> listarRecursos() {
         List<RecursoEntity> recursos = recursoRepositoy.findAll();
