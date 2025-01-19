@@ -3,7 +3,6 @@ package br.com.viniciuscrispim.projetoDemo.service;
 import br.com.viniciuscrispim.projetoDemo.dto.RecursoDTO;
 import br.com.viniciuscrispim.projetoDemo.entity.RecursoEntity;
 import br.com.viniciuscrispim.projetoDemo.repository.RecursoRepositoy;
-import br.com.viniciuscrispim.projetoDemo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
