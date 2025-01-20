@@ -20,6 +20,11 @@ public class RecursoController {
         return recursoService.listarRecursos();
     }
 
+    @GetMapping("/{id}")
+    public RecursoDTO buscarRecurso(@PathVariable Long id) {
+        return recursoService.buscarRecursoPorId(id);
+    }
+
     @PostMapping
     public RecursoDTO inserirRecurso(@RequestBody RecursoDTO recurso) {
         return recursoService.inserirRecurso(recurso);

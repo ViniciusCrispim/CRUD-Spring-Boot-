@@ -21,9 +21,14 @@ public class UsuarioController {
         return usuarioService.listarUsuarios();
     }
 
+    @GetMapping("/{id}")
+    public UsuarioDTO buscarUsuario(@PathVariable Long id) {
+        return usuarioService.buscarUsuarioPorId(id);
+    }
+
     @PostMapping
-    public void inserirUsuario(@RequestBody UsuarioDTO usuario) {
-        usuarioService.inserirUsuario(usuario);
+    public UsuarioDTO inserirUsuario(@RequestBody UsuarioDTO usuario) {
+        return usuarioService.inserirUsuario(usuario);
     }
 
     @PutMapping
@@ -33,7 +38,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirUsuario(@PathVariable("id") Long id) {
-        usuarioService.excluirUsuario(id);
+        usuarioService.removerUsuario(id);
         return ResponseEntity.ok().build();
     }
 }

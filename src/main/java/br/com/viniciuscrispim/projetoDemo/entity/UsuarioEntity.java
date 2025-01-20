@@ -23,7 +23,7 @@ public class UsuarioEntity {
     @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     public UsuarioEntity(UsuarioDTO usuario) {

@@ -2,12 +2,20 @@ package br.com.viniciuscrispim.projetoDemo.entity;
 
 import br.com.viniciuscrispim.projetoDemo.dto.RecursoDTO;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "T_RECURSO")
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class RecursoEntity {
 
     @Id
@@ -20,46 +28,7 @@ public class RecursoEntity {
     @Column(nullable = false)
     private String chave;
 
-    public RecursoEntity() {
-    }
-
     public RecursoEntity(RecursoDTO recurso) {
         BeanUtils.copyProperties(recurso, this);
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getChave() {
-        return chave;
-    }
-
-    public void setChave(String chave) {
-        this.chave = chave;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof RecursoEntity that)) return false;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 }

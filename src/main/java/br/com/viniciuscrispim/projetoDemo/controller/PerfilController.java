@@ -21,6 +21,11 @@ public class PerfilController {
         return perfilService.listarPerfis();
     }
 
+    @GetMapping("/{id}")
+    public PerfilDTO buscarPerfil(@PathVariable Long id){
+        return perfilService.buscarPerfilPorId(id);
+    }
+
     @PostMapping
     public PerfilDTO inserirPerfil(@RequestBody PerfilDTO perfil){
         return perfilService.inserirPerfil(perfil);

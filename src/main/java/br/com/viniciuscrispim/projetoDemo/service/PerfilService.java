@@ -18,6 +18,11 @@ public class PerfilService {
         return perfis.stream().map(PerfilDTO::new).toList();
     }
 
+    public PerfilDTO buscarPerfilPorId(Long id){
+        PerfilEntity perfil = perfilRepository.findById(id).get();
+        return new PerfilDTO(perfil);
+    }
+
     public PerfilDTO inserirPerfil(PerfilDTO perfil){
         PerfilEntity perfilEntity = new PerfilEntity(perfil);
         return new PerfilDTO(perfilRepository.save(perfilEntity));

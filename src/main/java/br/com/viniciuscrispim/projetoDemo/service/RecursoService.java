@@ -19,6 +19,10 @@ public class RecursoService {
         return recursos.stream().map(RecursoDTO::new).toList();
     }
 
+    public RecursoDTO buscarRecursoPorId(Long id) {
+        return new RecursoDTO(recursoRepositoy.findById(id).get());
+    }
+
     public RecursoDTO inserirRecurso(RecursoDTO recurso) {
         RecursoEntity recursoEntity = new RecursoEntity(recurso);
         return new RecursoDTO(recursoRepositoy.save(recursoEntity));
@@ -34,7 +38,4 @@ public class RecursoService {
         recursoRepositoy.delete(recurso);
     }
 
-    public RecursoDTO buscarRecursoPorId(Long id) {
-        return new RecursoDTO(recursoRepositoy.findById(id).get());
-    }
 }

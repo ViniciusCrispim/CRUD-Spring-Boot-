@@ -17,11 +17,15 @@ public class UsuarioService {
     public List<UsuarioDTO> listarUsuarios(){
         List<UsuarioEntity> usuarios = usuarioRepository.findAll();
         return usuarios.stream().map(UsuarioDTO::new).toList();
-    }   
+    }
 
-    public void inserirUsuario(UsuarioDTO usuario){
+    public UsuarioDTO buscarUsuarioPorId(Long id){
+        return new UsuarioDTO(usuarioRepository.findById(id).get());
+    }
+
+    public UsuarioDTO inserirUsuario(UsuarioDTO usuario){
         UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
-        usuarioRepository.save(usuarioEntity);
+        return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
     }
 
     public UsuarioDTO alterarUsuario(UsuarioDTO usuario){
@@ -29,12 +33,9 @@ public class UsuarioService {
         return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
     }
 
-    public void excluirUsuario(Long id){
+    public void removerUsuario(Long id){
         UsuarioEntity usuario = usuarioRepository.findById(id).get();
         usuarioRepository.delete(usuario);
     }
 
-    public UsuarioDTO buscarUsuarioPorId(Long id){
-        return new UsuarioDTO(usuarioRepository.findById(id).get());
-    }
 }

@@ -2,6 +2,7 @@ package br.com.viniciuscrispim.projetoDemo.entity;
 
 import br.com.viniciuscrispim.projetoDemo.dto.PerfilUsuarioDTO;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class PerfilUsuarioEntity {
 
     @Id
@@ -28,10 +30,10 @@ public class PerfilUsuarioEntity {
 
     public PerfilUsuarioEntity(PerfilUsuarioDTO perfilUsuario) {
         BeanUtils.copyProperties(perfilUsuario, this);
-        if(perfilUsuario != null && perfilUsuario.getUsuario() != null) {
+        if(perfilUsuario.getUsuario() != null) {
             this.usuario = new UsuarioEntity(perfilUsuario.getUsuario());
         }
-        if(perfilUsuario != null && perfilUsuario.getPerfil() != null) {
+        if(perfilUsuario.getPerfil() != null) {
             this.perfil = new PerfilEntity(perfilUsuario.getPerfil());
         }
     }
